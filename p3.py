@@ -17,5 +17,5 @@ biases = [2, 3, 0.5]
 #     neuron_output += neuron_bias
 #     layer_outputs.append(neuron_output)
 
-output = np.dot(weights, inputs) + biases
+output = np.dot(inputs, np.array(weights).T) + biases
 print(output)
