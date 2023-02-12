@@ -16,3 +16,5 @@ p8:
     poetry run python p8.py
 p9:
     poetry run python p9.py
+p10:
+    poetry run python p10.py

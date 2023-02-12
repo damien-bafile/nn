@@ -44,7 +44,6 @@ class Activation_Softmax:
 
         self.output = probabilities
 
-
 # Common loss class
 class Loss:
 
