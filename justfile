@@ -1,3 +1,5 @@
+connect:
+  poetry shell
 p1:
     poetry run python p1.py
 p2:
@@ -18,3 +20,5 @@ p9:
     poetry run python p9.py
 p10:
     poetry run python p10.py
+p11:
+    poetry run python p11.py
