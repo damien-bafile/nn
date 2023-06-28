@@ -22,3 +22,5 @@ p10:
     poetry run python p10.py
 p11:
     poetry run python p11.py
+p12:
+    poetry run python p12.py

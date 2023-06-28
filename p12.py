@@ -195,6 +195,20 @@ class Activation_Softmax_Loss_CategoricalCrossentropy():
         self.dinputs = self.dinputs / samples
 
 
+# SGD optimizer
+class Optimizer_SDG:
+
+    # Initialize optimizer - set settings,
+    # learning rate of 1. is default for the optimizer
+    def __init__(self, learning_rate=1.0):
+        self.learning_rate = learning_rate
+
+    # Update parameters
+    def update_params(self, layer):
+        layer.weights += -self.learning_rate * layer.dweights
+        layer.biases += -self.learning_rate * layer.dbiases
+
+
 # Create dataset
 X, y = spiral_data(samples=100, classes=3)
 
@@ -210,6 +224,9 @@ dense2 = Layer_Dense(3, 3)
 
 # Create Softmax classifier's combined loss and activation
 loss_activation = Activation_Softmax_Loss_CategoricalCrossentropy()
+
+# Create optimizer
+optimizer = Optimizer_SGD()
 
 # Perform a forward pass of our training data through this layer
 dense1.forward(X)
