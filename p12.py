@@ -226,7 +226,7 @@ dense2 = Layer_Dense(3, 3)
 loss_activation = Activation_Softmax_Loss_CategoricalCrossentropy()
 
 # Create optimizer
-optimizer = Optimizer_SGD()
+optimizer = Optimizer_SDG()
 
 # Perform a forward pass of our training data through this layer
 dense1.forward(X)
