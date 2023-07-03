@@ -24,3 +24,9 @@ p11:
     poetry run python p11.py
 p12:
     poetry run python p12.py
+p13:
+    poetry run python p13.py
+p14:
+    poetry run python p14.py
+p15:
+    poetry run python p15.py
