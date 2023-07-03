@@ -7,7 +7,6 @@ nnfs.init()
 
 # Dense layer
 class Layer_Dense:
-
     # Layer initialization
     def __init__(self, n_inputs, n_neurons):
         # Initialize weights and biases
@@ -32,7 +31,6 @@ class Layer_Dense:
 
 # ReLU activation
 class Activation_ReLU:
-
     # Forward pass
     def forward(self, inputs):
 
@@ -160,7 +158,6 @@ class Loss_CategoricalCrossentropy(Loss):
 # Softmax classifier - combined Softmax activation
 # and cross-entropy loss for faster backward step
 class Activation_Softmax_Loss_CategoricalCrossentropy():
-
     # Creates activation and loss function objects
     def __init__(self):
         self.activation = Activation_Softmax()
@@ -178,7 +175,6 @@ class Activation_Softmax_Loss_CategoricalCrossentropy():
     # Backward pass
 
     def backward(self, dvalues, y_true):
-
         # Number of samples
         samples = len(dvalues)
 
@@ -198,7 +194,7 @@ class Activation_Softmax_Loss_CategoricalCrossentropy():
 # SGD optimizer
 class Optimizer_SGD:
     # Initialize optimizer - set settings,
-#    learning rate of 1. is default for this optimizer
+    #    learning rate of 1. is default for this optimizer
     def __init__(self, learning_rate=1., decay=0., momentum=0.5):
         self.learning_rate = learning_rate
         self.current_learning_rate = learning_rate
@@ -214,10 +210,8 @@ class Optimizer_SGD:
 
     # Update parameters
     def update_params(self, layer):
-        
         # If we use momentum
         if self.momentum:
-        
             # If layer does not contain momentum arrays, create them
             # filled with zeros
             if not hasattr(layer, 'weight_momentums'):
@@ -232,6 +226,7 @@ class Optimizer_SGD:
             self.momentum * layer.weight_momentums - \
             self.current_learning_rate * layer.dweights
             layer.weight_momentums = weight_updates
+
             # Build bias updates
             bias_updates = \
             self.momentum * layer.bias_momentums - \
@@ -243,8 +238,8 @@ class Optimizer_SGD:
             layer.dweights
             bias_updates = -self.current_learning_rate * \
             layer.dbiases
+
         # Update weights and biases using either
-        
         # vanilla or momentum updates
         layer.weights += weight_updates
         layer.biases += bias_updates
@@ -275,7 +270,6 @@ optimizer = Optimizer_SGD(decay=1e-3, momentum=0.9)
 
 # Train in loop
 for epoch in range(10001):
-
     # Perform a forward pass of our training data through this layer
     dense1.forward(X)
 
