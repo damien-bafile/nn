@@ -7,7 +7,6 @@ nnfs.init()
 
 # Dense layer
 class Layer_Dense:
-
     # Layer initialization
     def __init__(self, n_inputs, n_neurons):
         # Initialize weights and biases
@@ -32,10 +31,8 @@ class Layer_Dense:
 
 # ReLU activation
 class Activation_ReLU:
-
     # Forward pass
     def forward(self, inputs):
-
         # Remember input values
         self.inputs = inputs
         # Calculate output values from inputs
@@ -53,7 +50,6 @@ class Activation_ReLU:
 
 # Softmax activation
 class Activation_Softmax:
-
     # Forward pass
     def forward(self, inputs):
         # Remember input values
@@ -70,7 +66,6 @@ class Activation_Softmax:
 
     # Backward pass
     def backward(self, dvalues):
-
         # Create uninitialized array
         self.dinputs = np.empty_like(dvalues)
 
@@ -91,11 +86,9 @@ class Activation_Softmax:
 
 # Common loss class
 class Loss:
-
     # Calculates the data and regularization losses
     # given model output and ground truth values
     def calculate(self, output, y):
-
         # Calculate sample losses
         sample_losses = self.forward(output, y)
 
@@ -108,10 +101,8 @@ class Loss:
 
 # Cross-entropy loss
 class Loss_CategoricalCrossentropy(Loss):
-
     # Forward pass
     def forward(self, y_pred, y_true):
-
         # Number of samples in a batch
         samples = len(y_pred)
 
@@ -126,7 +117,6 @@ class Loss_CategoricalCrossentropy(Loss):
                 range(samples),
                 y_true
             ]
-
         # Mask values - only for one-hot encoded labels
         elif len(y_true.shape) == 2:
             correct_confidences = np.sum(
@@ -140,7 +130,6 @@ class Loss_CategoricalCrossentropy(Loss):
 
     # Backward pass
     def backward(self, dvalues, y_true):
-
         # Number of samples
         samples = len(dvalues)
         # Number of labels in every sample
@@ -160,7 +149,6 @@ class Loss_CategoricalCrossentropy(Loss):
 # Softmax classifier - combined Softmax activation
 # and cross-entropy loss for faster backward step
 class Activation_Softmax_Loss_CategoricalCrossentropy():
-
     # Creates activation and loss function objects
     def __init__(self):
         self.activation = Activation_Softmax()
@@ -176,9 +164,7 @@ class Activation_Softmax_Loss_CategoricalCrossentropy():
         return self.loss.calculate(self.output, y_true)
 
     # Backward pass
-
     def backward(self, dvalues, y_true):
-
         # Number of samples
         samples = len(dvalues)
 
@@ -197,7 +183,6 @@ class Activation_Softmax_Loss_CategoricalCrossentropy():
 
 # SGD optimizer
 class Optimizer_SGD:
-
     # Initialize optimizer - set settings,
     # learning rate of 1. is default for the optimizer
     def __init__(self, learning_rate=0.85):
