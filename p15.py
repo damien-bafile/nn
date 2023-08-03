@@ -33,7 +33,6 @@ class Layer_Dense:
 class Activation_ReLU:
     # Forward pass
     def forward(self, inputs):
-
         # Remember input values
         self.inputs = inputs
         # Calculate output values from inputs
@@ -51,7 +50,6 @@ class Activation_ReLU:
 
 # Softmax activation
 class Activation_Softmax:
-
     # Forward pass
     def forward(self, inputs):
         # Remember input values
@@ -68,7 +66,6 @@ class Activation_Softmax:
 
     # Backward pass
     def backward(self, dvalues):
-
         # Create uninitialized array
         self.dinputs = np.empty_like(dvalues)
 
@@ -89,7 +86,6 @@ class Activation_Softmax:
 
 # Common loss class
 class Loss:
-
     # Calculates the data and regularization losses
     # given model output and ground truth values
     def calculate(self, output, y):
@@ -106,7 +102,6 @@ class Loss:
 
 # Cross-entropy loss
 class Loss_CategoricalCrossentropy(Loss):
-
     # Forward pass
     def forward(self, y_pred, y_true):
 
@@ -138,7 +133,6 @@ class Loss_CategoricalCrossentropy(Loss):
 
     # Backward pass
     def backward(self, dvalues, y_true):
-
         # Number of samples
         samples = len(dvalues)
         # Number of labels in every sample
